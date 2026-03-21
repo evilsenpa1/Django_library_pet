@@ -21,6 +21,7 @@ from django.urls import include, path
 
 api_apps = [
     'books',
+    'authors',
 ]
 
 api_urlpatterns = [
