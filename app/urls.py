@@ -18,7 +18,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+
+api_apps = [
+    'books',
+]
+
+api_urlpatterns = [
+    path('api/v1/', include(f'{app}.urls')) for app in api_apps
+]
+
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include('books.urls'), name="books"),
+    *api_urlpatterns,
 ]
