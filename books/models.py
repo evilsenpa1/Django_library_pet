@@ -6,7 +6,7 @@ class BookModel(models.Model):
     description = models.CharField(blank=False, null=False)
     date = models.DateField(blank=False, null=False)
     pub_date = models.DateTimeField(auto_now_add=True, blank=False, null=False)
-    book_file = models.FileField(upload_to="media", blank=False, null=False)
+    book_file = models.FileField(upload_to="media/%Y/%m/%d/", blank=False, null=False)
 
     class Meta:
         ordering = ["pub_date"]
