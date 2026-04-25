@@ -4,4 +4,5 @@ from .models import BookModel
 
 @admin.register(BookModel)
 class BookModelAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["name", "date", "pub_date"]
+    search_fields = ["name", "description"]
