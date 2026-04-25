@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ["id", "username", "email", "password", "last_login", "date_joined"]
 
     def create(self, validated_data):
-        # create_user сам вызывает set_password()
+        # create_user calls set_password() internally
         return UserModel.objects.create_user(**validated_data)
 
     def update(self, instance, validated_data):
