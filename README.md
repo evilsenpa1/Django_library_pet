@@ -35,7 +35,7 @@ Library API is a pet project — a backend REST API for a library catalog. It su
 - **JWT Authentication** — access & refresh token flow via `simplejwt`
 - **Swagger UI** — interactive API docs at `/api/docs/`
 - **Pagination** — page-based, 20 items per page
-- **CORS** — configured via `django-cors-headers`
+- **CORS** — configured via `django-cors-headers` (all origins allowed when `DEBUG=True`)
 - **Environment-based config** — all secrets live in `.env`, never in code
 
 ### Tech Stack
@@ -93,9 +93,11 @@ AuthorModel
 | `GET` | `/api/v1/authors/{id}/` | No | Retrieve an author |
 | `PUT/PATCH` | `/api/v1/authors/{id}/` | Yes | Update an author |
 | `DELETE` | `/api/v1/authors/{id}/` | Yes | Delete an author |
+| `GET` | `/api/v1/users/` | Admin only | List all users |
 | `POST` | `/api/v1/users/` | No | Register a new user |
 | `GET` | `/api/v1/users/{id}/` | Yes | Get user profile |
 | `PUT/PATCH` | `/api/v1/users/{id}/` | Yes | Update profile / change password |
+| `DELETE` | `/api/v1/users/{id}/` | Yes | Delete user (owner or admin) |
 | `GET` | `/api/docs/` | — | Swagger UI |
 | `GET` | `/api/schema/` | — | Raw OpenAPI schema (JSON/YAML) |
 
@@ -209,7 +211,7 @@ Library API — пет-проєкт, бекенд REST API для бібліот
 - **JWT-автентифікація** — flow access + refresh токенів через `simplejwt`
 - **Swagger UI** — інтерактивна документація API за адресою `/api/docs/`
 - **Пагінація** — посторінкова, 20 елементів на сторінку
-- **CORS** — налаштований через `django-cors-headers`
+- **CORS** — налаштований через `django-cors-headers` (усі джерела дозволені при `DEBUG=True`)
 - **Конфігурація через env** — усі секрети у `.env`, ніколи в коді
 
 ### Технологічний стек
@@ -267,9 +269,11 @@ AuthorModel
 | `GET` | `/api/v1/authors/{id}/` | Ні | Отримати автора |
 | `PUT/PATCH` | `/api/v1/authors/{id}/` | Так | Оновити автора |
 | `DELETE` | `/api/v1/authors/{id}/` | Так | Видалити автора |
+| `GET` | `/api/v1/users/` | Тільки адмін | Список користувачів |
 | `POST` | `/api/v1/users/` | Ні | Зареєструвати користувача |
 | `GET` | `/api/v1/users/{id}/` | Так | Отримати профіль |
 | `PUT/PATCH` | `/api/v1/users/{id}/` | Так | Оновити профіль / змінити пароль |
+| `DELETE` | `/api/v1/users/{id}/` | Так | Видалити користувача (власник або адмін) |
 | `GET` | `/api/docs/` | — | Swagger UI |
 | `GET` | `/api/schema/` | — | OpenAPI схема (JSON/YAML) |
 
