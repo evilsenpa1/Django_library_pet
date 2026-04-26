@@ -5,5 +5,5 @@ class AuthorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = AuthorModel
-        fields = '__all__'
-        read_only_fields = ['pub_date']
+        fields = ["id", "name", "date_of_birth", "pub_date", "books"]
+        read_only_fields = ["pub_date"]

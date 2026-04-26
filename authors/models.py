@@ -2,9 +2,9 @@ from django.db import models
 
 
 class AuthorModel(models.Model):
-    name = models.CharField(blank=False, null=False)
-    date_of_birth = models.DateField(blank=False, null=False)
-    pub_date = models.DateTimeField(auto_now_add=True, blank=False, null=False)
+    name = models.CharField(max_length=255)
+    date_of_birth = models.DateField()
+    pub_date = models.DateTimeField(auto_now_add=True)
     books = models.ManyToManyField('books.BookModel', related_name="authors", blank=True)
 
     class Meta:

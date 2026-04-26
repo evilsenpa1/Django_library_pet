@@ -1,0 +1,59 @@
+# ruff.toml
+
+line-length = 88
+target-version = "py312"
+
+# ─────────────────────────────────────────
+# Исключения из проверки (lint + format)
+# ─────────────────────────────────────────
+exclude = [
+    ".venv",
+    "venv",
+    "migrations",        # авто-генерируемые файлы Django
+    "staticfiles",
+    "manage.py",
+    "__pycache__",
+    ".git",
+]
+
+[lint]
+# ─────────────────────────────────────────
+# Включённые группы правил
+# ─────────────────────────────────────────
+select = [
+    "E",      # pycodestyle — базовые ошибки стиля
+    "F",      # pyflakes — неиспользуемые импорты, переменные, undefined names
+    "W",      # pycodestyle warnings
+    "B",      # flake8-bugbear — частые баги и антипаттерны
+    "UP",     # pyupgrade — устаревший синтаксис (str() вместо unicode() и т.д.)
+    "DJ",     # flake8-django — Django-специфичные ошибки
+    "RUF",    # Ruff-специфичные правила
+]
+
+# ─────────────────────────────────────────
+# Отключённые правила — не беспокоят по пустякам
+# ─────────────────────────────────────────
+ignore = [
+    "E501",   # длина строки — за этим следит форматировщик
+    "W291",   # trailing whitespace — форматировщик
+    "B008",   # вызов функции как default-аргумент (нужно для Depends в DRF/FastAPI)
+    "B904",   # raise ... from err — не всегда нужно
+    "RUF012", # mutable class variable — мешает в Django моделях (Meta, etc.)
+]
+
+# ─────────────────────────────────────────
+# Авто-фикс
+# ─────────────────────────────────────────
+fixable = ["ALL"]
+unfixable = []
+
+[lint.per-file-ignores]
+# В settings можно использовать * импорты (from config.settings import *)
+"settings*.py" = ["F401", "F403", "F405"]
+# В __init__.py неиспользуемые импорты — это нормально (реэкспорт)
+"__init__.py" = ["F401"]
+
+[format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
