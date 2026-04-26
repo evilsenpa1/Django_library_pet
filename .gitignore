@@ -77,8 +77,6 @@ pgdata/
 *~
 .DS_Store
 Thumbs.db
-ruff.toml
-
 # ========================
 # Testing & Coverage
 # ========================
